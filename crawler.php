@@ -28,6 +28,8 @@ if($timeDiff >= 3600){
 	    		break;
 	    	}
 	    	
+	    	$caption = mb_strtolower($m->getCaption());
+	    	
 	    	if(strpos($m->getCaption(), $reportTag) === false){
 	    		continue;
 	    	}
@@ -39,6 +41,8 @@ if($timeDiff >= 3600){
 	    	);
 	    }
 	}
+	
+	krsort($reports);
 	
 	file_put_contents($reportFile, json_encode($reports));
 }
